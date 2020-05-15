@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+    <aop:config>
+        <aop:pointcut id="log" expression="execution(* com.xiaohe.aop..*.*(..))"></aop:pointcut>
+        <aop:aspect ref="logAop">
+            <!-- 前置-->
+            <aop:before method="add" pointcut-ref="log"></aop:before>
+            <!-- 后置-->
+            <aop:after method="add2" pointcut-ref="log"></aop:after>
+        </aop:aspect>
+    </aop:config>
+    <bean id="logAop" class="com.xiaohe.aop.Aop"></bean>
+
+
+    <bean id="logAspect" class="com.xiaohe.aop.Aspect"> </bean>
+
+</beans>
