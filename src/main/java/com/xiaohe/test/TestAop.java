@@ -10,8 +10,6 @@ public class TestAop {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("bean.xml");
         Aspect aspect = (Aspect) applicationContext.getBean("logAspect");
         aspect.add();
-
     }
-
 
 }

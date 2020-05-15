@@ -10,10 +10,21 @@
     <aop:config>
         <aop:pointcut id="log" expression="execution(* com.xiaohe.aop..*.*(..))"></aop:pointcut>
         <aop:aspect ref="logAop">
-            <!-- 前置-->
+            <!-- 前置-
             <aop:before method="add" pointcut-ref="log"></aop:before>
-            <!-- 后置-->
+            ->
+            <!-后置
             <aop:after method="add2" pointcut-ref="log"></aop:after>
+            -->
+
+            <!-- 环绕通知-->
+            <aop:around method="add3" pointcut-ref="log"></aop:around>
+
+            <!--异常-->
+            <aop:after-throwing method="afterThrowing" pointcut-ref="log"/>
+
+
+            <!-- -->
         </aop:aspect>
     </aop:config>
     <bean id="logAop" class="com.xiaohe.aop.Aop"></bean>
